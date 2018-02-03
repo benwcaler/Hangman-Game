@@ -1,13 +1,16 @@
 //list of words to pull from randomly
 var dinosaurs = ["utahraptor", "triceratops", "velociraptor", "tyranosaurus rex", "stegosaurus", "giraffatitan", "zephyrosaurus", "quaesitosaurus", "brachiosaurus", "megalosaurus"]
-var gameWord = []
-var blanks = []
-var letterGrave = []
-var wins = 0
-var loses = 0
-var guesses = 0
+var gameWord = [];
+var blanks = [];
+var letterGrave = [];
+var wins = 0;
+var losses = 0;
+var guesses = 0;
+
 
 $(document).ready(function () {
+    document.getElementById("wins").innerHTML = wins;
+    document.getElementById("losses").innerHTML = losses;
     //starts the game with a random key
     document.onkeypress = function start() {
         reset()
@@ -51,7 +54,7 @@ $(document).ready(function () {
                 //if the letter is not in the word send it to a dead letter array and display it in the letter graveyard
                 if (letterGrave.includes(attempt.toUpperCase())) {
                 } else {
-                    guesses --
+                    guesses--
                     document.getElementById("guesses").innerHTML = guesses
                     letterGrave.push(attempt.toUpperCase())
                     document.getElementById("letterGrave").innerHTML = letterGrave.join(" ")
@@ -60,13 +63,13 @@ $(document).ready(function () {
             //once twelve dead letters are selected the game is over
             if (letterGrave.length === 12) {
                 loses++
-                alert("Game Over " + "You have " + loses + " loses!");
+                document.getElementById("losses").innerHTML = losses;
                 //select a new word once the previous word is guessed or the game ends due to dead letters
                 reset()
                 //once the word is finished the game is over
             } else if (blanks.join("") === gameWord) {
                 wins++
-                alert("You win! " + "You have " + wins + " wins!");
+                document.getElementById("wins").innerHTML = wins;
                 //select a new word once the previous word is guessed or the game ends due to dead letters
                 reset()
             }
