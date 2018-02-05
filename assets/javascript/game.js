@@ -69,17 +69,17 @@ $(document).ready(function () {
                 losses++
                 document.getElementById("losses").innerHTML = losses;
                 document.getElementById("lose-wrapper").style.display = "inline";
-                document.getElementById("roar").Play();
+                document.getElementById("roar").play();
                 //select a new word once the previous word is guessed or the game ends due to dead letters
 
-                setTimeout(function(){reset()}, 2000)
-                //once the word is finished the game is over
+                setTimeout(function(){reset()}, 3000)
+                //once the word is finished the game is overs
             } else if (blanks.join("") === gameWord) {
                 wins++
                 document.getElementById("wins").innerHTML = wins;
                 document.getElementById("win-wrapper").style.display = "inline";
                 //select a new word once the previous word is guessed or the game ends due to dead letters
-                setTimeout(function(){reset()}, 2000)
+                setTimeout(function(){reset()}, 3000)
             }
         }
     }
