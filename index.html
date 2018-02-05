@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
     <title>Hangman Game</title>
 </head>
+
 <body>
-    <p>Press any key to get started.</p>
-    <p>Number of guesses remaining: <span id="guesses"></span></p>
-    <p>Letters already guessed: <span id=letterGrave></span></p>
-    <p>Wins: <span id="wins"></span></p>
-    <p>Losses: <span id="losses"></span></p>
-    <p id="word"></p>
-    <p id="blanks"></p>
+    <div id="wrapper">
+        <div class="title">HANGMAN</div>
+        <div id="start">Press any key to get started.</div>
+        <div id="info">
+            <div id="score">
+                <div>Wins:
+                    <span id="wins"></span>
+                </div>
+                <div>Losses:
+                    <span id="losses"></span>
+                </div>
+                <br>
+                <div>
+                    <u>Guesses remaining</u>
+                    <br>
+                    <span id="guesses"></span>
+                </div>
+                <br>
+                <div>
+                    <u>Letter graveyard</u>
+                    <br>
+                    <span id=letterGrave></span>
+                </div>
+            </div>
+        </div>
+        <div id="blanks"></div>
+        <div id="lose-wrapper">
+            <img src="assets/images/lose.jpg" alt="win" id="lose-img">
+            <p style="text-align: center">YOU LOSE!</p>
+            <audio src="assets/t-rex.mp3" id="roar"></audio>
+        </div>
+        <div id="win-wrapper">
+            <img src="assets/images/win.jpg" alt="win" id="win-img">
+            <p style="text-align: center">YOU WIN!</p>
+        </div>
+    </div>
 </body>
+
 </html>

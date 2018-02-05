@@ -13,6 +13,8 @@ $(document).ready(function () {
     document.getElementById("losses").innerHTML = losses;
     //starts the game with a random key
     document.onkeypress = function start() {
+        document.getElementById("start").style.display = "none";
+        document.getElementById("blanks").style.display = "inline";
         reset()
         hangManGame()
     }
@@ -23,8 +25,10 @@ $(document).ready(function () {
         letterGrave = [];
         guesses = 12;
         document.getElementById("guesses").innerHTML = guesses
-        gameWord = document.getElementById("word").innerHTML = dinosaurs[Math.floor(Math.random() * 10)];
+        gameWord = dinosaurs[Math.floor(Math.random() * 10)];
         document.getElementById("letterGrave").innerHTML = letterGrave.join(" ")
+        document.getElementById("lose-wrapper").style.display = "none";
+        document.getElementById("win-wrapper").style.display = "none";
         //display a series of blanks depending on the length of the random word array
         for (var i = 0; i < gameWord.length; i++) {
             blanks.push("_");
@@ -62,18 +66,21 @@ $(document).ready(function () {
             }
             //once twelve dead letters are selected the game is over
             if (letterGrave.length === 12) {
-                loses++
+                losses++
                 document.getElementById("losses").innerHTML = losses;
+                document.getElementById("lose-wrapper").style.display = "inline";
+                document.getElementById("roar").Play();
                 //select a new word once the previous word is guessed or the game ends due to dead letters
-                reset()
+
+                setTimeout(function(){reset()}, 2000)
                 //once the word is finished the game is over
             } else if (blanks.join("") === gameWord) {
                 wins++
                 document.getElementById("wins").innerHTML = wins;
+                document.getElementById("win-wrapper").style.display = "inline";
                 //select a new word once the previous word is guessed or the game ends due to dead letters
-                reset()
+                setTimeout(function(){reset()}, 2000)
             }
         }
     }
 });
-
