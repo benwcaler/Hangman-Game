@@ -1,11 +1,12 @@
 //list of words to pull from randomly
-var dinosaurs = ["utahraptor", "triceratops", "velociraptor", "tyranosaurus rex", "stegosaurus", "giraffatitan", "zephyrosaurus", "quaesitosaurus", "brachiosaurus", "megalosaurus"]
+var dinosaurs = ["utahraptor", "triceratops", "velociraptor", "tyranosaurus-rex", "stegosaurus", "giraffatitan", "zephyrosaurus", "quaesitosaurus", "brachiosaurus", "megalosaurus"]
 var gameWord = [];
 var blanks = [];
 var letterGrave = [];
 var wins = 0;
 var losses = 0;
 var guesses = 0;
+var previousWord = [];
 
 
 $(document).ready(function () {
@@ -20,18 +21,21 @@ $(document).ready(function () {
     }
     //resets all variables and chooses the word
     function reset() {
-        gameWord = [];
         blanks = [];
         letterGrave = [];
         guesses = 12;
         document.getElementById("guesses").innerHTML = guesses
         gameWord = dinosaurs[Math.floor(Math.random() * 10)];
+        if (previousWord === gameWord) {
+            gameWord = dinosaurs[Math.floor(Math.random() * 10)];
+        }
+        previousWord = gameWord
         document.getElementById("letterGrave").innerHTML = letterGrave.join(" ")
         document.getElementById("lose-wrapper").style.display = "none";
         document.getElementById("win-wrapper").style.display = "none";
         //display a series of blanks depending on the length of the random word array
         for (var i = 0; i < gameWord.length; i++) {
-            blanks.push("_");
+            blanks.push("-");
             if (gameWord[i] === " ") {
                 blanks[i] = ("-");
             }
